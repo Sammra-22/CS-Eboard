@@ -75,8 +75,12 @@ WSGI_APPLICATION = 'cs_manager.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': os.environ.get('CSM_DB_NAME', 'postgres'),
+        'USER': os.environ.get('CSM_DB_USER', 'postgres'),
+        'PASSWORD': os.environ.get('CSM_DB_PASSWORD', ''),
+        'HOST': os.environ.get('CSM_DB_HOST', 'db'),
+        'PORT': 5432
     }
 }
 
