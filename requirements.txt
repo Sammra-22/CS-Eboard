@@ -1,0 +1,20 @@
+Django==2.1
+django-annoying==0.10.4
+django-guardian==1.4.9
+django-constrainedfilefield==3.2.0
+python-magic >= 0.4.2
+psycopg2-binary==2.7.5
+django-cleanup==2.1.0
+django-custom-user==0.7
+django-model-utils==3.1.2
+pybase62==0.3.2
+django-sekizai==0.10.0
+djangorestframework==3.9.0
+django-clear-cache==0.3
+django-prettyjson==0.4.1
+python-json-logger==0.1.10
+
+# Development
+django-extensions==2.0.7
+django-autotranslate==1.1.0
+ipython==7.2.0
