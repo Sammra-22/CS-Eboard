@@ -2,13 +2,13 @@ version: '3'
 
 services:
   db:
-    container_name: db
+    container_name: cs_db
     image: postgres:10.3
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
   app:
-    container_name: app
+    container_name: csm
     command: python manage.py runserver 0.0.0.0:8080
     volumes:
       - .:/src

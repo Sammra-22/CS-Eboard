@@ -31,13 +31,15 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'eboard.apps.EboardConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'phonenumber_field',
+    'eboard.organizations.apps.OrganizationsConfig',
+    'eboard.clients.apps.ClientsConfig',
 ]
 
 MIDDLEWARE = [
