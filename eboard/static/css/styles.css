@@ -35,6 +35,10 @@ strong {
     max-width: 540px;
 }
 
+.alert-message .alert{
+    max-width: 540px;
+}
+
 /* Index and search list results */
 .box-container {
     display: flex;

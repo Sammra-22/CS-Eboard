@@ -37,7 +37,6 @@
 </nav>
 <main>
     <div class="container">
-        {% include 'components/messages.html' with messages=messages form=form %}
         <div class="row">
             <div class="col s12">
                 <h1>
@@ -45,9 +44,10 @@
                 </h1>
             </div>
         </div>
-        <div class="section">
+        <div class="section mb-5">
             {% block content %}{% endblock %}
         </div>
+        {% include 'components/messages.html' with messages=messages form=form %}
     </div>
 </main>
 <script src="{% static "library/popper/popper.min.js" %}"></script>

@@ -1,7 +1,7 @@
 {% for message in messages %}
-    <div class="row">
-        <div class="col s12">
-            <div class="card-panel">
+    <div class="row alert-message">
+        <div class="col s12 d-flex justify-content-center">
+            <div class="alert alert-info">
                 <span class="green-text">{{ message }}</span>
             </div>
         </div>
@@ -10,9 +10,9 @@
 
 {% if form %}
     {% for error in form.non_field_errors %}
-        <div class="row">
-            <div class="col s12">
-                <div class="card-panel red darken-1">
+        <div class="row alert-message">
+            <div class="col s12 d-flex justify-content-center">
+                <div class="alert alert-warning">
                     <span class="white-text">{{ error }}</span>
                 </div>
             </div>
