@@ -1,0 +1,109 @@
+body {
+    font-family: 'Open Sans', sans-serif;
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    background: #eeeeee;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
+/* Navbar */
+#logo-container {
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.nav-link{
+    font-size: 1em;
+    display: flex;
+    align-items: center;
+    color: #767676;
+    font-weight: 500;
+    height: 60px;
+}
+
+strong {
+    font-weight: bold;
+}
+
+.login-wrapper {
+    width: inherit;
+    max-width: 540px;
+}
+
+/* Index and search list results */
+.box-container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.fancy-box {
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    min-height: 40vh;
+    position: relative;
+    text-align: center;
+    color: white;
+    margin-top: 20px;
+    margin-right: 10px;
+    margin-left: 10px;
+    transition: all 0.2s ease-in-out;
+    box-shadow: 0px 3px 6px 0px #787878;
+}
+
+.fancy-box>.material-icons {
+    font-size: 4rem;
+}
+
+.fancy-box:hover {
+    text-decoration: none;
+    color: white;
+    transform: scale(1.05);
+    cursor: pointer;
+}
+
+.search-box {
+    background: #64B9CC;
+}
+
+.box-text {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    background: rgba(0, 0, 0, 0.4);
+    padding: 10px;
+    text-transform: uppercase;
+}
+
+.box-multi-text {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+@media only screen and (max-width: 768px) {
+    .box-container {
+        flex-direction: column;
+    }
+}
+
+.centered-text {
+    text-align: center;
+}
+
+.dashboard-title{
+    font-weight: 600;
+}
+
+.dashboard-title > span {
+    font-weight: 100;
+    color: #676767;
+}

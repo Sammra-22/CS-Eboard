@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Dashboard' %}{% endblock %}
+{% block subtitle %}
+    <span class="dashboard-title text-center d-block">CSM <span>{% trans 'Dashboard' %}</span></span>
+{% endblock %}
+
+{% block content %}
+    <div class="box-container">
+        <a href="{% url 'dashboard:index' slug %}" class="fancy-box search-box">
+            <i class="material-icons">search</i>
+            <div class="box-text">{% trans 'All Clients' %}</div>
+        </a>
+    </div>
+{% endblock %}

@@ -1,0 +1,40 @@
+{% load i18n %}
+
+<form class="login-wrapper" method="post" novalidate>
+    {% csrf_token %}
+    <div class="row">
+        <div class="form-group col s12">
+            <label for="{{ form.username.id_for_label }}">{% trans 'Email address' %}</label>
+            <input
+                    type="text"
+                    name="{{ form.username.html_name }}"
+                    id="{{ form.username.id_for_label }}"
+                    class="form-control {% if form.username.errors %}invalid{% endif %}"
+                    autofocus
+            >
+            {% include 'components/form-field-errors.html' with field=form.username %}
+        </div>
+    </div>
+    <div class="row">
+        <div class="form-group col s12">
+            <label for="{{ form.password.id_for_label }}">{% trans 'Password' %}</label>
+            <input
+                    type="password"
+                    name="{{ form.password.html_name }}"
+                    id="{{ form.password.id_for_label }}"
+                    class="form-control {% if form.password.errors %}invalid{% endif %}"
+            >
+            {% include 'components/form-field-errors.html' with field=form.password %}
+        </div>
+    </div>
+    <div class="row mt-4">
+        <div class="col s6">
+            {#            <div class="password-reset-link">#}
+            {#                <a href="{% url 'password_reset' %}">{% trans 'Forgotten your password?' %}</a>#}
+            {#            </div>#}
+        </div>
+        <div class="col s6">
+            <button class="btn btn-primary light-blue float-right" type="submit">{% trans 'Login' %}</button>
+        </div>
+    </div>
+</form>

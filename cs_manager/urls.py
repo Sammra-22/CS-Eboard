@@ -2,10 +2,11 @@
 cs_manager URL Configuration
 
 """
+from django.conf.urls import url
 from django.contrib import admin
-from django.urls import path, include
+from django.urls import include
 
 urlpatterns = [
-    path('eboard/', include('eboard.urls')),
-    path('admin/', admin.site.urls),
+    url('eboard/(?P<slug>[\w-]+)/', include('eboard.urls')),
+    url('admin/', admin.site.urls),
 ]

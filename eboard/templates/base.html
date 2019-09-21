@@ -1,0 +1,58 @@
+{% load static %}
+{% load i18n %}
+{% load sekizai_tags %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+    <title>CSM - {% block title %}{% endblock %}</title>
+
+    <!-- CSS  -->
+    <link rel="stylesheet" href="{% static "library/bootstrap/bootstrap.min.css" %}">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="{% static "css/styles.css" %}">
+    <link rel="stylesheet" href="{% static "css/icon.css" %}">
+    {% render_block "extra_css" %}
+</head>
+<body>
+<nav class="navbar navbar-light mb-5" role="navigation">
+    <a id="logo-container" href="{% url 'dashboard:index' slug %}" class="nav-brand ml-4">
+        {% if organization.logo %}
+            <img src="{{ organization.logo.url }}" height="60" alt="Brand logo"
+                 class="brand-logo-image">
+        {% else %}
+            <img src="{% static "images/logo.png" %}" height="60" alt="Brand logo"
+                 class="brand-logo-image">
+        {% endif %}
+    </a>
+
+    {% if user.is_authenticated %}
+        <a href="{% url 'dashboard:logout' slug %}" class="nav-link mr-4">
+            {% trans 'Logout' %}
+            <i class="material-icons ml-2">exit_to_app</i>
+        </a>
+    {% endif %}
+</nav>
+<main>
+    <div class="container">
+        {% include 'components/messages.html' with messages=messages form=form %}
+        <div class="row">
+            <div class="col s12">
+                <h1>
+                    {% block subtitle %}{% endblock %}
+                </h1>
+            </div>
+        </div>
+        <div class="section">
+            {% block content %}{% endblock %}
+        </div>
+    </div>
+</main>
+<script src="{% static "library/popper/popper.min.js" %}"></script>
+<script src="{% static "library/jquery/jquery.min.js" %}"></script>
+<script src="{% static "library/bootstrap/bootstrap.min.js" %}"></script>
+{% render_block "extra_js" %}
+</body>
+</html>
