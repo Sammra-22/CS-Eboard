@@ -1,10 +1,15 @@
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
+from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.generic import TemplateView
+from django.views.generic.edit import ModelFormMixin, CreateView
+from django.utils.translation import gettext_lazy as _
 
+from eboard.clients.models import Client
+from eboard.forms import ClientForm
 from eboard.organizations.models import Organization
 
 
@@ -37,6 +42,17 @@ class OrganizationPermissionRequiredMixin(
         return reverse('dashboard:login', args=[slug])
 
 
+class ClientFormMixin(
+    OrganizationPermissionRequiredMixin,
+    ModelFormMixin,
+):
+    def get_form_kwargs(self):
+        kwargs = super().get_form_kwargs()
+        kwargs.update({
+            'org': self.get_permission_object(),
+        })
+        return kwargs
+
 class OrganizationLoginView(OrganizationContextMixin, LoginView):
     template_name = 'pages/login.html'
     redirect_authenticated_user = True
@@ -65,3 +81,28 @@ class OrganizationLogoutView(LogoutView):
 class OrganizationDashboardView(OrganizationPermissionRequiredMixin,
                                 TemplateView):
     template_name = 'pages/index.html'
+
+
+class ClientCreateView(ClientFormMixin, SuccessMessageMixin, CreateView):
+    template_name = 'pages/client-add.html'
+    model = Client
+    form_class = ClientForm
+    success_message = _('The client was created successfully')
+
+    def get_initial(self):
+        return {
+            'first_name': self.request.POST.get('first_name', ''),
+            'last_name': self.request.POST.get('last_name', ''),
+            'gender': self.request.POST.get('gender', ''),
+            'birth_date': self.request.POST.get('birth_date', ''),
+            'email': self.request.POST.get('email', ''),
+            'phone': self.request.POST.get('phone', ''),
+        }
+
+    def get_success_url(self):
+        slug = self.kwargs['slug']
+        return reverse(
+            'dashboard:index', args=[
+                slug,
+            ]
+        )

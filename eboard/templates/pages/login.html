@@ -2,10 +2,11 @@
 {% load i18n %}
 
 {% block title %}{% trans 'Login' %}{% endblock %}
-{% block subtitle %}<div class="text-center">{% trans 'Login' %}</div>{% endblock %}
+{% block subtitle %}
+    <div class="text-center">{% trans 'Login' %}</div>{% endblock %}
 
 {% block content %}
-    <div class="mt-5 d-flex justify-content-center w-100">
-    {% include 'components/forms/login.html' %}
+    <div class="form-container mt-5">
+        {% include 'components/forms/login.html' %}
     </div>
 {% endblock %}

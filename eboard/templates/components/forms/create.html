@@ -1,0 +1,101 @@
+{% load i18n %}
+
+<form method="post" enctype="multipart/form-data" novalidate>
+    {% csrf_token %}
+
+    <div class="row">
+        <div class="form-group col-12 col-md-6">
+            <label for="{{ form.first_name.id_for_label }}">{{ form.first_name.label }}</label>
+            {% include 'components/form-field-errors.html' with field=form.first_name %}
+            <input
+                    type="text"
+                    id="{{ form.first_name.id_for_label }}"
+                    class="form-control {% if form.first_name.errors %}is-invalid{% endif %}"
+                    name="{{ form.first_name.html_name }}"
+                    {% if form.first_name.field.required %}required{% endif %}
+                    value="{{ form.first_name.initial }}"
+                    autofocus
+            >
+        </div>
+
+
+        <div class="form-group col-12 col-md-6">
+            <label for="{{ form.last_name.id_for_label }}">{{ form.last_name.label }}</label>
+            {% include 'components/form-field-errors.html' with field=form.last_name %}
+            <input
+                    type="text"
+                    id="{{ form.last_name.id_for_label }}"
+                    class="form-control  {% if form.last_name.errors %}is-invalid{% endif %}"
+                    name="{{ form.last_name.html_name }}"
+                    {% if form.last_name.field.required %}required{% endif %}
+                    value="{{ form.last_name.initial }}"
+            >
+        </div>
+
+
+        <div class="form-group col-12 col-md-6">
+            <label for="{{ form.gender.id_for_label }}">{{ form.gender.label }}</label>
+            {% include 'components/form-field-errors.html' with field=form.gender %}
+            <select
+                    id="{{ form.gender.id_for_label }}"
+                    class="form-control  {% if form.gender.errors %}is-invalid{% endif %}"
+                    name="{{ form.gender.html_name }}"
+            >
+                {% for gender in form.gender.field.choices %}
+                    <option value="{{ gender.0 }}" {% if form.gender.initial == gender.0 %}
+                            selected {% endif %}>{{ gender.1 }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+
+        <div class="form-group col-12 col-md-6">
+            <label for="{{ form.birth_date.id_for_label }}">{{ form.birth_date.label }}</label>
+            {% include 'components/form-field-errors.html' with field=form.birth_date %}
+            <input
+                    type="date"
+                    id="{{ form.birth_date.id_for_label }}"
+                    class="form-control  {% if form.birth_date.errors %}is-invalid{% endif %}"
+                    name="{{ form.birth_date.html_name }}"
+                    {% if form.birth_date.field.required %}required{% endif %}
+                    value="{{ form.birth_date.initial }}"
+            >
+        </div>
+
+
+        <div class="form-group col-12 col-md-6">
+            <label for="{{ form.email.id_for_label }}">{{ form.email.label }}</label>
+            {% include 'components/form-field-errors.html' with field=form.email %}
+            <input
+                    type="email"
+                    id="{{ form.email.id_for_label }}"
+                    class="form-control  {% if form.email.errors %}is-invalid{% endif %}"
+                    name="{{ form.email.html_name }}"
+                    {% if form.email.field.required %}required{% endif %}
+                    value="{{ form.email.initial }}"
+            >
+        </div>
+
+
+        <div class="form-group col-12 col-md-6">
+            <label for="{{ form.phone.id_for_label }}">{{ form.phone.label }}</label>
+            {% include 'components/form-field-errors.html' with field=form.phone %}
+            <input
+                    type="tel"
+                    id="{{ form.phone.id_for_label }}"
+                    class="form-control  {% if form.phone.errors %}is-invalid{% endif %}"
+                    name="{{ form.phone.html_name }}"
+                    {% if form.phone.field.required %}required{% endif %}
+                    value="{{ form.phone.initial }}"
+            >
+        </div>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col s12">
+            <button class="btn btn-primary light-blue float-right" type="submit">{% trans 'Submit' %}</button>
+        </div>
+    </div>
+
+
+</form>

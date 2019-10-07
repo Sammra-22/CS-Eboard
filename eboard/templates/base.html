@@ -35,6 +35,7 @@
         </a>
     {% endif %}
 </nav>
+{% include 'components/messages.html' with messages=messages form=form %}
 <main>
     <div class="container">
         <div class="row">
@@ -47,12 +48,16 @@
         <div class="section mb-5">
             {% block content %}{% endblock %}
         </div>
-        {% include 'components/messages.html' with messages=messages form=form %}
     </div>
 </main>
 <script src="{% static "library/popper/popper.min.js" %}"></script>
 <script src="{% static "library/jquery/jquery.min.js" %}"></script>
 <script src="{% static "library/bootstrap/bootstrap.min.js" %}"></script>
 {% render_block "extra_js" %}
+<script>
+    setTimeout(function () {
+        $(".alert-message").addClass("out");
+    }, 5000);
+</script>
 </body>
 </html>

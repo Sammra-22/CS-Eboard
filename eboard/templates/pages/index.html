@@ -3,11 +3,19 @@
 
 {% block title %}{% trans 'Dashboard' %}{% endblock %}
 {% block subtitle %}
-    <span class="dashboard-title text-center d-block">CSM <span>{% trans 'Dashboard' %}</span></span>
+    <span class="dashboard-title">CSM <span>{% trans 'Dashboard' %}</span></span>
 {% endblock %}
 
 {% block content %}
     <div class="box-container">
+        <a href="{% url 'dashboard:add-client' slug %}" class="fancy-box add-client-box">
+            <i class="material-icons">person_add</i>
+            <div class="box-text">{% trans 'Add Client' %}</div>
+        </a>
+        <a href="{% url 'dashboard:index' slug %}" class="fancy-box schedule-box">
+            <i class="material-icons">calendar_today</i>
+            <div class="box-text">{% trans 'Schedule' %}</div>
+        </a>
         <a href="{% url 'dashboard:index' slug %}" class="fancy-box search-box">
             <i class="material-icons">search</i>
             <div class="box-text">{% trans 'All Clients' %}</div>

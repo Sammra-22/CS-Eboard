@@ -10,7 +10,29 @@ main {
     flex: 1 0 auto;
 }
 
-/* Navbar */
+div>form label {
+    font-weight: 400;
+    color: #565656;
+}
+
+.field-error-text{
+    font-size: 0.8rem;
+    color: #dc3545;
+    float: right;
+    margin-top: 3px;
+}
+
+.form-container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.form-container form {
+    width: inherit;
+    max-width: 540px;
+}
+
 #logo-container {
     display: flex;
     align-items: center;
@@ -26,13 +48,45 @@ main {
     height: 60px;
 }
 
+
+.dashboard-title{
+    display: block;
+    font-weight: 600;
+    text-align: center;
+}
+
+.dashboard-title > span {
+    font-weight: 100;
+    color: #676767;
+}
+
+.layout-title{
+    display: block;
+    font-weight: 400;
+    color: white;
+    font-size: 2rem;
+    padding: 10px 20px;
+}
+
 strong {
     font-weight: bold;
 }
 
-.login-wrapper {
-    width: inherit;
-    max-width: 540px;
+.alert-message {
+    position: fixed;
+    justify-content: center;
+    width: 100%;
+    margin: 0;
+    -moz-animation-name: fadeOut;
+    -webkit-animation-name: fadeOut;
+    animation-name: fadeOut;
+    animation-duration: 6s;
+    animation-timing-function: ease-out;
+}
+
+.alert-message.out {
+    opacity: 0;
+    display: none;
 }
 
 .alert-message .alert{
@@ -72,8 +126,16 @@ strong {
     cursor: pointer;
 }
 
+.add-client-box {
+    background: #3F51B5;
+}
+
+.schedule-box {
+    background: #FF5722;
+}
+
 .search-box {
-    background: #64B9CC;
+    background: #4CAF50;
 }
 
 .box-text {
@@ -97,17 +159,12 @@ strong {
     .box-container {
         flex-direction: column;
     }
+    .layout-title{
+        text-align: center;
+    }
 }
 
-.centered-text {
-    text-align: center;
-}
-
-.dashboard-title{
-    font-weight: 600;
-}
-
-.dashboard-title > span {
-    font-weight: 100;
-    color: #676767;
-}
+@-moz-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; display: none; }}
+@-webkit-keyframes fadeOut { 0% { opacity: 1; visibility: visible; }  100% { opacity: 0; display: none; }}
+@-ms-keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; display: none; }}
+@keyframes fadeOut { 0% { opacity: 1; visibility: visible; } 100% { opacity: 0; display: none;  }}

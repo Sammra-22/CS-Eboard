@@ -58,3 +58,9 @@ class Client(
             first_name=self.first_name,
             last_name=self.last_name,
         )
+
+    def update(self, **kwargs):
+        self.allowed_attributes = {
+            'first_name', 'last_name', 'gender', 'birth_date', 'email', 'phone'
+        }
+        return super().update(**kwargs)
