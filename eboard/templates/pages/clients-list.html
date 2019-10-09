@@ -7,7 +7,7 @@
 {% block content %}
     <div class="row mt-4">
         <div class="col-12">
-             {% include "components/forms/search.html" %}
+             {% include "components/forms/search.html" with form=form %}
              {% include "components/tables/clients.html" with client_list=client_list slug=slug %}
              {% include "components/pagination.html" with page_obj=page_obj paginator=paginator %}
         </div>

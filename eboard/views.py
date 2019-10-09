@@ -5,12 +5,13 @@ from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
 from django.views.generic import TemplateView, ListView
-from django.views.generic.edit import ModelFormMixin, CreateView
+from django.views.generic.edit import ModelFormMixin, CreateView, FormMixin
 from django.utils.translation import gettext_lazy as _
 
 from eboard.clients.models import Client
-from eboard.forms import ClientForm
+from eboard.forms import ClientForm, ClientSearchForm
 from eboard.organizations.models import Organization
+from eboard.utils import filter_client_queryset
 
 
 def index(request):
@@ -108,12 +109,19 @@ class ClientCreateView(ClientFormMixin, SuccessMessageMixin, CreateView):
         )
 
 
-class ClientListView(OrganizationPermissionRequiredMixin, ListView):
+class ClientListView(OrganizationPermissionRequiredMixin, ListView, FormMixin):
     template_name = 'pages/clients-list.html'
     model = Client
     paginate_by = 12
+    form_class = ClientSearchForm
+
+    def get_initial(self):
+        return {'search': self.request.GET.get('search', '')}
 
     def get_queryset(self):
+        search_query = self.request.GET.get('search', None)
         organization = self.get_permission_object()
         queryset = Client.objects.filter(organization=organization, )
+        if search_query:
+            return filter_client_queryset(queryset, search_query)
         return queryset

@@ -32,3 +32,6 @@ class ClientForm(forms.ModelForm):
             'email': _('Email'),
             'phone': _('Phone number'),
         }
+
+class ClientSearchForm(forms.Form):
+    search = forms.CharField(required=False)
