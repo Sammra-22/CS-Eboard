@@ -1,0 +1,19 @@
+{% load i18n %}
+
+<form class="searchbar mb-5" method="GET">
+    <div class="input-group">
+        <label for="{{ form.search.id_for_label }}"></label>
+        <input
+                type="text"
+                class="form-control"
+                name="{{ form.search.html_name }}"
+                id="{{ form.search.id_for_label }}"
+                value="{{ form.search.initial }}"
+                placeholder="Search client..."
+                aria-describedby="basic-addon2"
+                autofocus />
+        <div class="input-group-append">
+            <button class="btn btn-outline-primary" type="submit">Search</button>
+        </div>
+    </div>
+</form>

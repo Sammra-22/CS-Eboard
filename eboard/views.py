@@ -4,7 +4,7 @@ from django.contrib.messages.views import SuccessMessageMixin
 from django.http import HttpResponse
 from django.shortcuts import get_object_or_404
 from django.urls import reverse
-from django.views.generic import TemplateView
+from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import ModelFormMixin, CreateView
 from django.utils.translation import gettext_lazy as _
 
@@ -84,7 +84,7 @@ class OrganizationDashboardView(OrganizationPermissionRequiredMixin,
 
 
 class ClientCreateView(ClientFormMixin, SuccessMessageMixin, CreateView):
-    template_name = 'pages/client-add.html'
+    template_name = 'pages/client-new.html'
     model = Client
     form_class = ClientForm
     success_message = _('The client was created successfully')
@@ -106,3 +106,14 @@ class ClientCreateView(ClientFormMixin, SuccessMessageMixin, CreateView):
                 slug,
             ]
         )
+
+
+class ClientListView(OrganizationPermissionRequiredMixin, ListView):
+    template_name = 'pages/clients-list.html'
+    model = Client
+    paginate_by = 12
+
+    def get_queryset(self):
+        organization = self.get_permission_object()
+        queryset = Client.objects.filter(organization=organization, )
+        return queryset

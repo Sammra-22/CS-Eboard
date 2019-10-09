@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% load i18n %}
+
+{% block title %}{% trans 'Clients list' %}{% endblock %}
+{% block subtitle %}<span class="layout-title search-box">{% trans 'Clients list' %}</span>{% endblock %}
+
+{% block content %}
+    <div class="row mt-4">
+        <div class="col-12">
+             {% include "components/forms/search.html" %}
+             {% include "components/tables/clients.html" with client_list=client_list slug=slug %}
+             {% include "components/pagination.html" with page_obj=page_obj paginator=paginator %}
+        </div>
+    </div>
+{% endblock %}
