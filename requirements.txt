@@ -14,8 +14,10 @@ django-clear-cache==0.3
 django-prettyjson==0.4.1
 python-json-logger==0.1.10
 
+# Utility
 django-phonenumber-field==3.0.1
 phonenumbers==8.10.18
+django-scheduler==0.9.0
 
 # Development
 django-extensions==2.0.7

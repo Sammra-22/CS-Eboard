@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'sekizai',
     'phonenumber_field',
+    'schedule',
     'eboard.organizations.apps.OrganizationsConfig',
     'eboard.clients.apps.ClientsConfig',
 ]

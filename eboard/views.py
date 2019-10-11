@@ -1,3 +1,5 @@
+import datetime
+
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.messages.views import SuccessMessageMixin
@@ -7,6 +9,8 @@ from django.urls import reverse
 from django.views.generic import TemplateView, ListView
 from django.views.generic.edit import ModelFormMixin, CreateView, FormMixin
 from django.utils.translation import gettext_lazy as _
+from schedule.periods import Period, Year
+from schedule.views import CalendarByPeriodsView
 
 from eboard.clients.models import Client
 from eboard.forms import ClientForm, ClientSearchForm
@@ -27,7 +31,7 @@ class OrganizationContextMixin:
         return context
 
 
-class OrganizationPermissionRequiredMixin(
+class OrganizationPermissionMixin(
         LoginRequiredMixin,
         PermissionRequiredMixin,
         OrganizationContextMixin,
@@ -44,7 +48,7 @@ class OrganizationPermissionRequiredMixin(
 
 
 class ClientFormMixin(
-    OrganizationPermissionRequiredMixin,
+    OrganizationPermissionMixin,
     ModelFormMixin,
 ):
     def get_form_kwargs(self):
@@ -79,7 +83,7 @@ class OrganizationLogoutView(LogoutView):
         return reverse('dashboard:login', args=[slug])
 
 
-class OrganizationDashboardView(OrganizationPermissionRequiredMixin,
+class OrganizationDashboardView(OrganizationPermissionMixin,
                                 TemplateView):
     template_name = 'pages/index.html'
 
@@ -109,8 +113,8 @@ class ClientCreateView(ClientFormMixin, SuccessMessageMixin, CreateView):
         )
 
 
-class ClientListView(OrganizationPermissionRequiredMixin, ListView, FormMixin):
-    template_name = 'pages/clients-list.html'
+class ClientListView(OrganizationPermissionMixin, ListView, FormMixin):
+    template_name = 'pages/clients.html'
     model = Client
     paginate_by = 12
     form_class = ClientSearchForm
@@ -125,3 +129,14 @@ class ClientListView(OrganizationPermissionRequiredMixin, ListView, FormMixin):
         if search_query:
             return filter_client_queryset(queryset, search_query)
         return queryset
+
+
+class ScheduleCalendarView(OrganizationPermissionMixin, CalendarByPeriodsView):
+    template_name = "pages/schedule.html"
+    slug_url_kwarg = "slug"
+
+    def get_context_data(self, **kwargs):
+        today = datetime.datetime.now()
+        this_week = Period(None, today, today + datetime.timedelta(days=7))
+        self.kwargs['period'] = Year
+        return super().get_context_data(**kwargs)

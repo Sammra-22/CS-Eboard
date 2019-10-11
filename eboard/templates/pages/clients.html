@@ -5,7 +5,7 @@
 {% block subtitle %}<span class="layout-title search-box">{% trans 'Clients list' %}</span>{% endblock %}
 
 {% block content %}
-    <div class="row mt-4">
+    <div class="row mt-4 mx-md-3 mx-lg-5">
         <div class="col-12">
              {% include "components/forms/search.html" with form=form %}
              {% include "components/tables/clients.html" with client_list=client_list slug=slug %}
