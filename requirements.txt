@@ -1,4 +1,4 @@
-Django==2.1
+Django==2.1.11
 django-annoying==0.10.4
 django-guardian==1.4.9
 django-constrainedfilefield==3.2.0
