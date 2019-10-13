@@ -1,4 +1,4 @@
-Django==2.1
+Django==2.1.11
 django-annoying==0.10.4
 django-guardian==1.4.9
 django-constrainedfilefield==3.2.0
@@ -9,7 +9,7 @@ django-custom-user==0.7
 django-model-utils==3.1.2
 pybase62==0.3.2
 django-sekizai==0.10.0
-djangorestframework==3.9.0
+djangorestframework==3.9.1
 django-clear-cache==0.3
 django-prettyjson==0.4.1
 python-json-logger==0.1.10
