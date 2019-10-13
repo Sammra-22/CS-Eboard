@@ -3,10 +3,9 @@
 {% load i18n %}
 
 {% addtoblock "extra_css" %}
-    <link rel="stylesheet" href="{% static "library/fullcalendar/core/main.min.css" %}">
-    <link rel="stylesheet" href="{% static "library/fullcalendar/daygrid/main.min.css" %}">
-    <link rel="stylesheet" href="{% static "library/fullcalendar/timegrid/main.min.css" %}">
-    <link rel="stylesheet" href="{% static "library/fullcalendar/list/main.min.css" %}">
+    <link rel="stylesheet" href="{% static "@fullcalendar/core/main.min.css" %}">
+    <link rel="stylesheet" href="{% static "@fullcalendar/daygrid/main.min.css" %}">
+    <link rel="stylesheet" href="{% static "@fullcalendar/timegrid/main.min.css" %}">
 {% endaddtoblock %}
 
 <div class="row mt-4 mx-md-3 mx-lg-5">
@@ -16,12 +15,11 @@
 </div>
 
 {% addtoblock "extra_js" %}
-    <script src="{% static "library/moment/main.min.js" %}"></script>
-    <script src="{% static "library/fullcalendar/core/main.min.js" %}"></script>
-    <script src="{% static "library/fullcalendar/daygrid/main.min.js" %}"></script>
-    <script src="{% static "library/fullcalendar/timegrid/main.min.js" %}"></script>
-    <script src="{% static "library/fullcalendar/list/main.min.js" %}"></script>
-    <script src="{% static "library/fullcalendar/interaction/main.min.js" %}"></script>
+    <script src="{% static "@fullcalendar/moment/main.min.js" %}"></script>
+    <script src="{% static "@fullcalendar/core/main.min.js" %}"></script>
+    <script src="{% static "@fullcalendar/daygrid/main.min.js" %}"></script>
+    <script src="{% static "@fullcalendar/timegrid/main.min.js" %}"></script>
+    <script src="{% static "@fullcalendar/interaction/main.min.js" %}"></script>
     <script type='text/javascript'>
         $(document).ready(function () {
             var calendarEl = document.getElementById('calendar');

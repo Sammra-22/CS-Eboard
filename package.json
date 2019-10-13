@@ -1,0 +1,23 @@
+{
+  "name": "cs-eboard",
+  "version": "1.0.0",
+  "description": "A sample CRM for managing customers",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sammra-22/CS-Eboard.git"
+  },
+  "author": "Samir Boufatah",
+  "license": "ISC",
+  "dependencies": {
+    "moment": "^2.24.0",
+    "@fullcalendar/core": "^4.3.1",
+    "@fullcalendar/daygrid": "^4.3.0",
+    "@fullcalendar/timegrid": "^4.3.0",
+    "@fullcalendar/interaction": "^4.3.0",
+    "@fullcalendar/moment": "^4.3.0"
+  }
+}
