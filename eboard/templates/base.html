@@ -14,7 +14,7 @@
     <link href='https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="{% static "css/styles.css" %}">
     <link rel="stylesheet" href="{% static "css/icon.css" %}">
-    {% render_block "extra_head" %}
+    {% render_block "extra_css" %}
 </head>
 <body>
 <nav class="navbar navbar-light mb-5" role="navigation">
@@ -48,7 +48,6 @@
         <div class="section mb-5">
             {% block content %}{% endblock %}
         </div>
-    {% block body %}{% endblock %}
     </div>
 </main>
 <script src="{% static "library/popper/popper.min.js" %}"></script>

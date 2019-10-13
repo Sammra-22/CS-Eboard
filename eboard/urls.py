@@ -8,7 +8,7 @@ from django.urls import include
 from eboard.views import OrganizationDashboardView, OrganizationLoginView, OrganizationLogoutView, ClientCreateView, \
     ClientListView, ScheduleCalendarView
 
-
+app_name = 'dashboard'
 urlpatterns = [
     url(r'^login/$', OrganizationLoginView.as_view(), name='login'),
     url(r'^logout/$', OrganizationLogoutView.as_view(), name='logout'),

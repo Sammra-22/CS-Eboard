@@ -1,0 +1,46 @@
+{% load sekizai_tags %}
+{% load static %}
+{% load i18n %}
+
+{% addtoblock "extra_css" %}
+    <link rel="stylesheet" href="{% static "library/fullcalendar/core/main.min.css" %}">
+    <link rel="stylesheet" href="{% static "library/fullcalendar/daygrid/main.min.css" %}">
+    <link rel="stylesheet" href="{% static "library/fullcalendar/timegrid/main.min.css" %}">
+    <link rel="stylesheet" href="{% static "library/fullcalendar/list/main.min.css" %}">
+{% endaddtoblock %}
+
+<div class="row mt-4 mx-md-3 mx-lg-5">
+    <div class="col-12">
+        <div id='calendar'></div>
+    </div>
+</div>
+
+{% addtoblock "extra_js" %}
+    <script src="{% static "library/moment/main.min.js" %}"></script>
+    <script src="{% static "library/fullcalendar/core/main.min.js" %}"></script>
+    <script src="{% static "library/fullcalendar/daygrid/main.min.js" %}"></script>
+    <script src="{% static "library/fullcalendar/timegrid/main.min.js" %}"></script>
+    <script src="{% static "library/fullcalendar/list/main.min.js" %}"></script>
+    <script src="{% static "library/fullcalendar/interaction/main.min.js" %}"></script>
+    <script type='text/javascript'>
+        $(document).ready(function () {
+            var calendarEl = document.getElementById('calendar');
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                plugins: ['dayGrid', 'timeGrid', 'interaction'],
+                header: {center: 'dayGridMonth,timeGridWeek'},
+                views: {
+                    dayGridMonth: {
+                        titleFormat: {year: 'numeric', month: '2-digit', day: '2-digit'}
+                    }
+                }
+            });
+
+            calendar.on('dateClick', function (info) {
+                console.log('clicked on ' + info.dateStr);
+                info.dayEl.style.backgroundColor = 'red';
+            });
+            calendar.render();
+
+        });
+    </script>
+{% endaddtoblock %}
